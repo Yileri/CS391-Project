@@ -7,15 +7,21 @@ import { Container, Row, Col } from 'reactstrap';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/mycollection" element={<MyCollection />} />
-        </Routes>
-      </div>
-    </>
+    <Container>
+      <Row>
+        <Col sm={4}>
+          <Navbar />
+        </Col>
+        <Col sm={4}>
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/mycollection" element={<MyCollection />} />
+            </Routes>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
