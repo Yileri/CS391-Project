@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-function Home() {
+function Homie() {
     return (
         <Container>
             <Row>
@@ -29,4 +29,4 @@ function Home() {
     );
 };
 
-export default Home;
+export default Homie;
