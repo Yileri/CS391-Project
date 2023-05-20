@@ -4,8 +4,15 @@ import MyCollection from "./pages/MyCollection";
 import Navbar from "./Navbar";
 import { Route, Routes} from "react-router-dom"
 import { Container, Row, Col } from 'reactstrap';
+import axios from "axios";
+
+/*const api = axios.create({
+  baseURL: 'https://my-json-server.typicode.com/Yileri/CS391-JSON/comics'
+})
+*/
 
 function App() {
+  fetchData();
   return (
     <Container>
       <Row>
@@ -24,5 +31,16 @@ function App() {
     </Container>
   )
 }
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get('https://my-json-server.typicode.com/Yileri/CS391-JSON/comics');
+    const jsonData = response.data;
+    // Process the JSON data
+    console.log(jsonData);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export default App
