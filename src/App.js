@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { Route, Routes} from "react-router-dom"
 import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
+import Login from "./Login";
 
 /*const api = axios.create({
   baseURL: 'https://my-json-server.typicode.com/Yileri/CS391-JSON/comics'
@@ -14,6 +15,8 @@ import axios from "axios";
 function App() {
   fetchData();
   return (
+    <Login />
+    /*
     <Container>
       <Row>
         <Col sm={4}>
@@ -29,6 +32,7 @@ function App() {
         </Col>
       </Row>
     </Container>
+    */
   )
 }
 
