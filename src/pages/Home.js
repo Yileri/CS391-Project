@@ -10,7 +10,7 @@ function Home() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        let username = sessionStorage.getItem('username')
+        const username = sessionStorage.getItem('username')
         if (username === '' || username === null) {
             navigate('/login')
         }
@@ -31,6 +31,32 @@ function Home() {
     
       fetchData();
      }, []);
+
+     const addComic = async (newComic) => {
+      try {
+        // Fetch the user data from the JSON file
+        const response = await axios.get('http://localhost:3001/users');
+        const users = response.data;
+  
+        // Find the user by ID
+        const user = users.find((user) => user.id === sessionStorage.getItem('username'));
+  
+        if (user) {
+          // Add the new item to the user's list
+          user.collection.push(newComic);
+  
+          // Update the user data in the JSON file
+          await axios.put(`http://localhost:3001/users/${sessionStorage.getItem('username')}`, user);
+  
+          // Update the state with the modified user data
+          setComic([...comic]);
+
+          alert('Successfully added to the Collection')
+        }
+      } catch (error) {
+        alert(error);
+      }
+    };
 
       /*
       return (
@@ -73,7 +99,7 @@ function Home() {
                         >
                           {item.publisher}
                         </CardSubtitle>
-                        <Button>
+                        <Button onClick={() => addComic(item.id)}>
                           Add to Collection
                         </Button>
                       </CardBody>

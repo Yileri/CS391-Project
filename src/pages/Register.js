@@ -10,6 +10,7 @@ const Register = () => {
     const [phone, phonechange] = useState("");
     const [country, countrychange] = useState("turkey");
     const [gender, genderchange] = useState("");
+    const [collection, collectionchange] = useState([]);
 
     const navigate = useNavigate();
 
@@ -51,7 +52,7 @@ const Register = () => {
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        let regobj = { id, name, password, email, phone, country, gender };
+        let regobj = { id, name, password, email, phone, country, gender, collection };
         console.log(regobj);
         fetch("http://localhost:3001/users", {
             method: "POST",

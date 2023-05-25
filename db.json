@@ -83,7 +83,9 @@
       "phone": "0531 334 13 37",
       "country": "turkey",
       "gender": "male",
-      "collection": []
+      "collection": [
+        1
+      ]
     },
     {
       "id": "Gevres",
