@@ -1,18 +1,29 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Alert, Toast } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast'
 
 const Login = () => {
     const[username, usernameupdate] = useState('');
     const[password, passwordupdate] = useState('');
 
+    const navigate = useNavigate();
+
     const ProceedLogin= (e) => {
         e.preventDefault();
         if(validate()) {
-            fetch("https://my-json-server.typicode.com/Yileri/CS391-JSON/users" + "/" + username).then((res) => {
+            fetch("https://my-json-server.typicode.com/Yileri/CS391-JSON/users/" + username).then((res) => {
                 return res.json();
             }).then((resp) => {
-                console.log(resp)
+                if (Object.keys(resp).length === 0) {
+                    alert('Please Enter Valid Username')
+                } else {
+                    if(resp.password === password) {
+                        alert('Success!')
+                        navigate('/')
+                    } else {
+                        alert('Please Enter Valid Credentials')
+                    }
+                }
             }).catch((err) => {
                 alert('Login Failed: ' + err.message);
             })

@@ -1,11 +1,11 @@
 import React from "react";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyCollection from "./pages/MyCollection";
 import Navbar from "./Navbar";
-import { Route, Routes} from "react-router-dom"
+import { BrowserRouter, Route, Routes} from "react-router-dom"
 import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
-import Login from "./Login";
 
 /*const api = axios.create({
   baseURL: 'https://my-json-server.typicode.com/Yileri/CS391-JSON/comics'
@@ -15,7 +15,11 @@ import Login from "./Login";
 function App() {
   fetchData();
   return (
-    <Login />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/mycollection" element={<MyCollection />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     /*
     <Container>
       <Row>
