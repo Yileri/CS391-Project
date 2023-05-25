@@ -1,27 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyCollection from "./pages/MyCollection";
 import Navbar from "./Navbar";
-import { BrowserRouter, Route, Routes} from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
 import Register from "./pages/Register";
 
-/*const api = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/Yileri/CS391-JSON/comics'
-})
-*/
 
 function App() {
-  fetchData();
+  //fetchData();
+
+  /*
+  const [comics, setComics] = useState([])
+
+  useEffect(() => {
+    const fetchComics = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/comics")
+        setComics(response.data)
+      } catch (err) {
+        if (err.response) {
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log(`Error:  ${err.message}`)
+        }
+      }
+    }
+
+    fetchComics()
+  }, [])
+
+  */
   return (
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mycollection" element={<MyCollection />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/mycollection" element={<MyCollection />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
     /*
     <Container>
       <Row>
