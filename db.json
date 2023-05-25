@@ -1,0 +1,49 @@
+{
+  "comics": [
+    {
+      "id": 1,
+      "publisher": "Marvel",
+      "title": "The Amazing Spider-Man",
+      "number": 300,
+      "date": 1988
+    },
+    {
+      "id": 2,
+      "publisher": "Marvel",
+      "title": "Incredible Hulk",
+      "number": 181
+    },
+    {
+      "id": 3,
+      "publisher": "DC",
+      "title": "Detective Comics",
+      "number": 1000
+    },
+    {
+      "id": 4,
+      "publisher": "Marvel",
+      "title": "Secret Wars",
+      "number": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "Yilerii",
+      "name": "Yiğit İleri",
+      "password": "cs391!",
+      "email": "ileri.yigit@gmail.com",
+      "phone": "Yilerii",
+      "country": "turkey",
+      "gender": "male"
+    },
+    {
+      "id": "Gevres",
+      "name": "Gevrek Apaydın",
+      "password": "GevresGevres2022!",
+      "email": "gevrek.apaydin@gmail.com",
+      "phone": "0531 334 13 37",
+      "country": "turkey",
+      "gender": "male"
+    }
+  ]
+}

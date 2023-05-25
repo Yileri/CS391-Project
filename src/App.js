@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import { BrowserRouter, Route, Routes} from "react-router-dom"
 import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
+import Register from "./pages/Register";
 
 /*const api = axios.create({
   baseURL: 'https://my-json-server.typicode.com/Yileri/CS391-JSON/comics'
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mycollection" element={<MyCollection />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     /*
     <Container>

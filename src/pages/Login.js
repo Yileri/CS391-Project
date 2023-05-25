@@ -15,7 +15,7 @@ const Login = () => {
     const ProceedLogin= (e) => {
         e.preventDefault();
         if(validate()) {
-            fetch("https://my-json-server.typicode.com/Yileri/CS391-JSON/users/" + username).then((res) => {
+            fetch("http://localhost:3001/users/" + username).then((res) => {
                 return res.json();
             }).then((resp) => {
                 if (Object.keys(resp).length === 0) {
