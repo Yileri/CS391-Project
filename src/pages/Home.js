@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import Navbar from '../Navbar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -16,8 +16,6 @@ function Home() {
     }, []);
 
     const [comic, setComic] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
     
     useEffect(() => {
       const fetchData = async () => {
@@ -25,10 +23,8 @@ function Home() {
           const response = await axios.get('http://localhost:3001/comics');
           console.log(response.data);
           setComic(response.data);
-          setIsLoading(false);
         } catch (error) {
-          setError(error);
-          setIsLoading(false);
+          alert(error.message);
         }
       };
     
@@ -61,10 +57,26 @@ function Home() {
               <h1>HOME</h1>
               <ul>
                 {comic.map((item) => (
-                  <li key={item.id}>
-                    <div>{item.publisher}</div>
-                    <div>{item.title} #{item.number}</div>
-                    </li>
+                  <Card key={item.id}>
+                    <img 
+                      alt={`${item.title}`} 
+                      src={process.env.PUBLIC_URL + `/comic-covers/${item.id}.png`}
+                    />
+                    <CardBody>
+                      <CardTitle tag="h5">
+                        {item.title} #{item.number}
+                      </CardTitle>
+                      <CardSubtitle
+                        className="mb-2 text-muted"
+                        tag="h6"
+                      >
+                        {item.publisher}
+                      </CardSubtitle>
+                      <Button>
+                        Add to Collection
+                      </Button>
+                    </CardBody>
+                  </Card>
                 ))}
               </ul>
             </div>
