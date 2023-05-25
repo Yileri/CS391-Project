@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast'
 
 const Login = () => {
-    const[username, usernameupdate] = useState('');
-    const[password, passwordupdate] = useState('');
+    const[username, usernameupdate] = useState('')
+    const[password, passwordupdate] = useState('')
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        sessionStorage.clear();
+    })
 
     const ProceedLogin= (e) => {
         e.preventDefault();
@@ -19,6 +23,7 @@ const Login = () => {
                 } else {
                     if(resp.password === password) {
                         alert('Success!')
+                        sessionStorage.setItem('username', username)
                         navigate('/')
                     } else {
                         alert('Please Enter Valid Credentials')
