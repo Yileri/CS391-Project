@@ -42,9 +42,12 @@ function Home() {
         const user = users.find((user) => user.id === sessionStorage.getItem('username'));
   
         if (user) {
-          // Add the new item to the user's list
+          const collection = await axios.get(`http://localhost:3001/users/${sessionStorage.getItem('username')}`)
+          const collectionData = collection.data.collection
+
+          if (!collectionData.includes(newComic)) {
+            // Add the new item to the user's list
           user.collection.push(newComic);
-  
           // Update the user data in the JSON file
           await axios.put(`http://localhost:3001/users/${sessionStorage.getItem('username')}`, user);
   
@@ -52,6 +55,11 @@ function Home() {
           setComic([...comic]);
 
           alert('Successfully added to the Collection')
+          } else {
+            alert('Already in Collection')
+          }
+          
+          
         }
       } catch (error) {
         alert(error);
