@@ -24,6 +24,54 @@
       "publisher": "Marvel",
       "title": "Secret Wars",
       "number": 1
+    },
+    {
+      "id": 5,
+      "publisher": "Image",
+      "title": "Spawn",
+      "number": 1
+    },
+    {
+      "id": 6,
+      "publisher": "Marvel",
+      "title": "Ultimate Spider-Man",
+      "number": 1
+    },
+    {
+      "id": 7,
+      "publisher": "Marvel",
+      "title": "Venom",
+      "number": 35
+    },
+    {
+      "id": 8,
+      "publisher": "Image",
+      "title": "Spawn",
+      "number": 300
+    },
+    {
+      "id": 9,
+      "publisher": "Marvel",
+      "title": "The Amazing Spider-Man",
+      "number": 392
+    },
+    {
+      "id": 10,
+      "publisher": "Marvel",
+      "title": "The Amazing Spider-Man",
+      "number": 692
+    },
+    {
+      "id": 11,
+      "publisher": "Marvel",
+      "title": "Marvel Comics",
+      "number": 1000
+    },
+    {
+      "id": 12,
+      "publisher": "Marvel",
+      "title": "Daredevil",
+      "number": 1
     }
   ],
   "users": [
@@ -34,7 +82,8 @@
       "email": "ileri.yigit@gmail.com",
       "phone": "0531 334 13 37",
       "country": "turkey",
-      "gender": "male"
+      "gender": "male",
+      "collection": []
     },
     {
       "id": "Gevres",
@@ -43,7 +92,8 @@
       "email": "gevrek.apaydin@gmail.com",
       "phone": "0531 334 13 37",
       "country": "turkey",
-      "gender": "male"
+      "gender": "male",
+      "collection": []
     }
   ]
 }
