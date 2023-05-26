@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Comic Book Collection Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Members
+* Yiğit İleri (me)
 
-## Available Scripts
+## Description
+This application is a comic book collection website 
+where the user can browse the comic book database and manage their collections.
 
-In the project directory, you can run:
+## Functionalities
 
-### `npm start`
+* Creating Account: New users can create account for the website and use 
+  their credentials to login.
+* Login: Users who have created their account can access the website by 
+  typing in their credentials and start using the application.
+* Add to Collection: In Home page, the user can see the comic book database 
+  that consists of every comic book available on the website. User can add 
+  a specific comic book to their own collection by clicking Add to Collection 
+  button at the bottom of each comic book card.
+* Remove from Collection: Users can see their own collection in My Collection 
+  page. If they desire, they can remove comic books from their collection 
+  simply by clicking Remove from Collection button under each comic book card.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Example Use Case:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Let's say I am a new user and I want to create my comic book collection for this website. 
+  Here are the steps of what I would need to go through:
 
-### `npm test`
+  1. Create an account
+  2. Login
+  3. Add comic books to my collection
+  4. Go to My Collection Page
+  5. View my comic book collection
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Or I am an existig user and I want to remove a comic book from my collection:
+  1. Login
+  2. Go to My Collection page 
+  3. Find the comic book that I want to remove
+  4. Press Remove from Collection button
 
-### `npm run build`
+## External Libraries
+* React-toastify: I used them in order to make the look of alerts more aesthetic.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
