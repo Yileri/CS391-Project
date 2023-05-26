@@ -15,57 +15,61 @@ export default function MyCollection() {
   }, []);
 
   const [comic, setComic] = useState([]);
-    
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userResponse = await axios.get('http://localhost:3001/users');
-        const users = userResponse.data;
-          
-        const user = users.find((user) => user.id === sessionStorage.getItem('username'));
-
-        if (user) {
-          const comicsResponse = await axios.get('http://localhost:3001/comics');
-          const comics = comicsResponse.data;
-
-          const userComics = comics.filter((comic) => user.collection.includes(comic.id))
-          
-          setComic(userComics);
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-    
     fetchData();
-   }, []);
+  }, [sessionStorage.getItem('username') ]);
 
-   const removeComic = async (byeComic) => {
+  const fetchData = async () => {
     try {
-        // Fetch the user data from the JSON file
-      const response = await axios.get('http://localhost:3001/users');
-      const users = response.data;
-  
-        // Find the user by ID
+      // Fetch the user data
+      const usersResponse = await axios.get('http://localhost:3001/users');
+      const users = usersResponse.data;
+
+      // Find the specific user by ID
       const user = users.find((user) => user.id === sessionStorage.getItem('username'));
-  
+
       if (user) {
-        const collection = await axios.get(`http://localhost:3001/users/${sessionStorage.getItem('username')}`)
-        const collectionData = collection.data.collection
+        // Fetch the comics data
+        const comicsResponse = await axios.get('http://localhost:3001/comics');
+        const allComics = comicsResponse.data;
 
-        const index = collectionData.indexOf(byeComic)
+        // Filter the comics based on the user's collection
+        const userComics = allComics.filter((comic) => user.collection.includes(comic.id));
 
-        if (index !== -1) {
-          collectionData.splice(index, 1)
-          await axios.put(`http://localhost:3001/users/${sessionStorage.getItem('username')}`, user);
-          setComic([...comic]);
-          alert('Removed from the Collection')
-        } 
+        setComic(userComics);
       }
     } catch (error) {
-      alert(error);
+      alert('Error:', error);
     }
   };
+
+  const removeComic = async (comicId) => {
+    try {
+      // Fetch the user data
+      const usersResponse = await axios.get('http://localhost:3001/users');
+      const users = usersResponse.data;
+
+      // Find the specific user by ID
+      const user = users.find((user) => user.id === sessionStorage.getItem('username'));
+
+      if (user) {
+        // Remove the comic ID from the user's collection
+        user.collection = user.collection.filter((comic) => comic !== comicId);
+
+        // Update the user data in the JSON file
+        await axios.put(`http://localhost:3001/users/${user.id}`, user);
+
+        // Update the comics state by refetching the data
+        fetchData();
+
+        alert('Removed from the Collection');
+      }
+    } catch (error) {
+      alert('Error:', error);
+    }
+  };
+
 
 
   return (
@@ -95,7 +99,7 @@ export default function MyCollection() {
                           {item.publisher}
                         </CardSubtitle>
                         <Button onClick={() => removeComic(item.id)}>
-                          Add to Collection
+                          Remove from Collection
                         </Button>
                       </CardBody>
                     </Card>
