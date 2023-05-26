@@ -75,10 +75,10 @@ export default function MyCollection() {
   return (
   <Container>
         <Row>
-          <Col sm={2}>
+          <Col md={2} className='d-none d-md-block'>
             <Navbar />
           </Col>
-          <Col sm={10}>
+          <Col sm={12} md={10}>
             <div className="container">
               <h1>MY COLLECTION</h1>
                 <div className="card-grid">

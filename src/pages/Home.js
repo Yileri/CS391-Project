@@ -46,12 +46,12 @@ function Home() {
           const collectionData = collection.data.collection
 
           if (!collectionData.includes(newComic)) {
-            // Add the new item to the user's list
+          
           user.collection.push(newComic);
-          // Update the user data in the JSON file
+          
           await axios.put(`http://localhost:3001/users/${sessionStorage.getItem('username')}`, user);
   
-          // Update the state with the modified user data
+          
           setComic([...comic]);
 
           alert('Added to the Collection')
@@ -65,29 +65,15 @@ function Home() {
         alert(error);
       }
     };
-
-      /*
-      return (
-        <div>
-          <h1>Data:</h1>
-          <ul>
-            {data.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    };
-    */
     
 
     return (
     <Container>
         <Row>
-          <Col sm={2}>
+          <Col md={2} className='d-none d-md-block'>
             <Navbar />
           </Col>
-          <Col sm={10}>
+          <Col sm={12} md={10}>
             <div className="container">
               <h1>HOME</h1>
                 <div className="card-grid">
