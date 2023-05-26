@@ -88,8 +88,7 @@
         10,
         11,
         8,
-        7,
-        2
+        7
       ]
     },
     {
@@ -101,9 +100,19 @@
       "country": "turkey",
       "gender": "male",
       "collection": [
-        8,
-        3
+        3,
+        8
       ]
+    },
+    {
+      "id": "test1",
+      "name": "Test User",
+      "password": "testtest",
+      "email": "test.user@gmail.com",
+      "phone": "0531 334 37 37",
+      "country": "canada",
+      "gender": "female",
+      "collection": []
     }
   ]
 }

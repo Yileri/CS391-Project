@@ -6,6 +6,8 @@ export default function Navbar() {
     return (
       <nav className="nav">
         <ul>
+            <h3><i>{sessionStorage.getItem('username')}</i></h3>
+            <hr></hr>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/mycollection">My Collection</CustomLink>
             <CustomLink to='/login'>Log Out</CustomLink>

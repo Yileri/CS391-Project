@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
 
@@ -10,60 +11,43 @@ const Register = () => {
     const [phone, phonechange] = useState("");
     const [country, countrychange] = useState("turkey");
     const [gender, genderchange] = useState("");
-    const [collection, collectionchange] = useState([]);
+    const [collection] = useState([]);
 
     const navigate = useNavigate();
 
-    /*
-    const IsValidate = () => {
-        let isproceed = true;
-        let errormessage = 'Please enter the value in ';
-        if (id === null || id === '') {
-            isproceed = false;
-            errormessage += ' Username';
-        }
-        if (name === null || name === '') {
-            isproceed = false;
-            errormessage += ' Fullname';
-        }
-        if (password === null || password === '') {
-            isproceed = false;
-            errormessage += ' Password';
-        }
-        if (email === null || email === '') {
-            isproceed = false;
-            errormessage += ' Email';
-        }
 
-        if(!isproceed){
-            alert(errormessage)
-        }else{
-            if(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
-
-            }else{
-                isproceed = false;
-                alert('Please enter the valid email')
-            }
-        }
-        return isproceed;
-    }
-    */
-
-
-    const handlesubmit = (e) => {
+    const handlesubmit = async (e) => {
         e.preventDefault();
-        let regobj = { id, name, password, email, phone, country, gender, collection };
-        console.log(regobj);
-        fetch("http://localhost:3001/users", {
-            method: "POST",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(regobj)
-        }).then((res) => {
-            alert('Registered successfully.')
-            navigate('/login');
-        }).catch((err) => {
-            alert('Failed :' + err.message);
-        });
+
+        const response = await axios.get('http://localhost:3001/users');
+        const users = response.data;
+        const existingUser = users.find((user) => user.id === id);
+
+        if (existingUser) {
+            alert('User already exists')
+        }
+
+        else if (!name.includes(' ')) {
+        // The full name has a space
+        // Proceed with form submission or other actions
+            alert('Please enter your full name including a space.');
+        // ... handle form submission logic
+        } else {
+        // The full name does not have a space
+        // Display an error message or take other appropriate actions
+            let regobj = { id, name, password, email, phone, country, gender, collection };
+            console.log(regobj);
+            fetch("http://localhost:3001/users", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(regobj)
+            }).then((res) => {
+                alert('Registered successfully.')
+                navigate('/login');
+            }).catch((err) => {
+                alert('Failed :' + err.message);
+            });
+        }
     }
     return (
         <div>
@@ -79,37 +63,37 @@ const Register = () => {
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Username <span className="errmsg">*</span></label>
-                                        <input value={id} type="text" onChange={e => idchange(e.target.value)} className="form-control"></input>
+                                        <input value={id} type="text" required onChange={e => idchange(e.target.value)} minLength={4} maxLength={16} className="form-control"></input>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Password <span className="errmsg">*</span></label>
-                                        <input value={password} type="password" onChange={e => passwordchange(e.target.value)} className="form-control"></input>
+                                        <input value={password} type="password" required onChange={e => passwordchange(e.target.value)} minLength={8} maxLength={32} className="form-control"></input>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Full Name <span className="errmsg">*</span></label>
-                                        <input value={name} type="text" onChange={e => namechange(e.target.value)} className="form-control"></input>
+                                        <input value={name} type="text" required onChange={e => namechange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Email <span className="errmsg">*</span></label>
-                                        <input value={email} type="email" onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                        <input value={email} type="email" required onChange={e => emailchange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Phone <span className="errmsg"></span></label>
-                                        <input value={phone} type="tel" onChange={e => phonechange(e.target.value)} className="form-control"></input>
+                                        <input value={phone} type="tel" required onChange={e => phonechange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Country <span className="errmsg">*</span></label>
-                                        <select value={country} onChange={e => countrychange(e.target.value)} className="form-control">
+                                        <select value={country} required onChange={e => countrychange(e.target.value)} className="form-control">
                                             <option value="turkey">Turkey</option>
                                             <option value="usa">United States</option>
                                             <option value="uk">United Kingdom</option>
