@@ -10,31 +10,7 @@ import Register from "./pages/Register";
 
 
 function App() {
-  //fetchData();
 
-  /*
-  const [comics, setComics] = useState([])
-
-  useEffect(() => {
-    const fetchComics = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/comics")
-        setComics(response.data)
-      } catch (err) {
-        if (err.response) {
-          console.log(err.response.data)
-          console.log(err.response.status)
-          console.log(err.response.headers)
-        } else {
-          console.log(`Error:  ${err.message}`)
-        }
-      }
-    }
-
-    fetchComics()
-  }, [])
-
-  */
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -42,35 +18,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Routes>
-    /*
-    <Container>
-      <Row>
-        <Col sm={4}>
-          <Navbar />
-        </Col>
-        <Col sm={4}>
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/mycollection" element={<MyCollection />} />
-            </Routes>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-    */
   )
 }
-
-const fetchData = async () => {
-  try {
-    const response = await axios.get('https://my-json-server.typicode.com/Yileri/CS391-JSON/comics');
-    const jsonData = response.data;
-    // Process the JSON data
-    console.log(jsonData);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 export default App

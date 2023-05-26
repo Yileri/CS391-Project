@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const[username, usernameupdate] = useState('')
@@ -19,18 +20,18 @@ const Login = () => {
                 return res.json();
             }).then((resp) => {
                 if (Object.keys(resp).length === 0) {
-                    alert('Please Enter Valid Username')
+                    toast.warn('Please Enter a valid Username', {position: "top-center"});
                 } else {
                     if(resp.password === password) {
-                        alert('Success!')
+                        toast.success('Success!', {position: "top-center"});
                         sessionStorage.setItem('username', username)
                         navigate('/')
                     } else {
-                        alert('Please Enter Valid Credentials')
+                        toast.warn('Please Enter Valid Credentials', {position: "top-center"});
                     }
                 }
             }).catch((err) => {
-                alert('Login Failed: ' + err.message);
+                toast.error('Login Failed: ' + err.message, {position: "top-center"});
             })
         }
     }
@@ -39,18 +40,19 @@ const Login = () => {
         let result = true;
         if (username === '' || username === null) {
             result = false;
-            alert('Please Enter a Username');
+            toast.warn('Please Enter a Username', {position: "top-center"});
         }
 
         if (password === '' || password === null) {
             result = false;
-            alert('Please Enter a Password');
+            toast.warn('Please Enter a Password', {position: "top-center"});
         }
         return result;
     }
     
     return (
         <div className="row">
+            <ToastContainer/>
             <div className="offset-lg-3 col-lg-6">
                 <form onSubmit={ProceedLogin} className="container">
                     <div className="card">

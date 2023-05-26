@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -24,13 +26,13 @@ const Register = () => {
         const existingUser = users.find((user) => user.id === id);
 
         if (existingUser) {
-            alert('User already exists')
+            toast.error('User already exists', {position: 'top-center'})
         }
 
         else if (!name.includes(' ')) {
         // The full name has a space
         // Proceed with form submission or other actions
-            alert('Please enter your full name including a space.');
+            toast.warn('Please enter your full name including a space', {position: 'top-center'});
         // ... handle form submission logic
         } else {
         // The full name does not have a space
@@ -42,15 +44,16 @@ const Register = () => {
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(regobj)
             }).then((res) => {
-                alert('Registered successfully.')
+                alert('Registered successfully')
                 navigate('/login');
             }).catch((err) => {
-                alert('Failed :' + err.message);
+                toast.error('Failed :' + err.message, {position: 'top-center'});
             });
         }
     }
     return (
         <div>
+            <ToastContainer/>
             <div className="offset-lg-3 col-lg-6">
                 <form className="container" onSubmit={handlesubmit}>
                     <div className="card">
