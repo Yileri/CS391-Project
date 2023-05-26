@@ -54,7 +54,7 @@ function Home() {
           // Update the state with the modified user data
           setComic([...comic]);
 
-          alert('Successfully added to the Collection')
+          alert('Added to the Collection')
           } else {
             alert('Already in Collection')
           }
